@@ -2,10 +2,10 @@ import tkinter
 
 
 window = tkinter.Tk()
-window.title("My first Tic Tac Toe")
+window.title("My first Tic Tac Toe ")
 
-# Créer le tableau du jeu
-board = [["", "", ""], ["", "", ""], ["", "", ""]]
+#tableau du jeu
+leTab = [["", "", ""], ["", "", ""], ["", "", ""]]
 
 
 lePlayer = "X"
@@ -13,6 +13,17 @@ lePlayer = "X"
 # Bouton réinitialiser
 resetButton = tkinter.Button(window, text="Réinitialiser")
 resetButton.grid(row=3, column=0, columnspan=3)
+
+# Créer les boutons pour chaque case
+lesButtons = []
+for i in range(3):
+    row = []
+    for j in range(3):
+        button = tkinter.Button(window, text="", width=10, height=5,
+                               command=lambda row=i, col=j: cell_click(row, col))
+        button.grid(row=i, column=j)
+        row.append(button)
+    lesButtons.append(row)
 
 # Lancer du jeu
 window.mainloop()
